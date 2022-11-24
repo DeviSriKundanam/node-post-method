@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		body{
+			background-color: grey;
+			background-image: url("https://media.istockphoto.com/id/143174573/photo/dandelion-seed-with-water-drops.jpg?s=612x612&w=0&k=20&c=aTik2tkLzmLpf7By7-0byHORDn5nos4JDyPVP9sf-1A=");
+			background-attachment: fixed;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: 80%;
+		}
+		#username{
+			border-radius: 15px;
+			width: 25%;
+			padding: 1%;
+			font-size: 20px;
+		}
+		#password{
+			border-radius: 15px;
+			width: 25%;
+			padding: 1%;
+			font-size: 20px;
+		}
+		#button{
+			border-radius: 10px;
+			width: 8%;
+			padding: 0.8%;
+			font-size: 18px;
+		}
+		.postmethod{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="postmethod">
+	<p><input placeholder="enter username" id="username" /></p>
+	<p><input placeholder="enter password" id="password"></p>
+	<button id="button"onclick="demo()">submit</button>
+	</div>
+	<script type="text/javascript">
+		function demo(){
+			var username=document.getElementById("username").value
+			var password=document.getElementById("password").value
+			console.log(username)
+			console.log(password)
+			fetch("http://localhost:3000/newData",{
+			method:"POST",
+			headers:{
+				"Content-Type":"application/json"
+			},
+			body:JSON.stringify({name:username,password:password}
+				)
+		})
+		}
+	</script>
+</body>
+</html>
