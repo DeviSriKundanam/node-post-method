@@ -25,6 +25,12 @@
 			padding: 1%;
 			font-size: 20px;
 		}
+		#dropdown{
+			border-radius: 15px;
+			width: 25%;
+			padding: 1%;
+			font-size: 20px;
+		}
 		#button{
 			border-radius: 10px;
 			width: 8%;
@@ -40,20 +46,41 @@
 	<div class="postmethod">
 	<p><input placeholder="enter username" id="username" /></p>
 	<p><input placeholder="enter password" id="password"></p>
+	<p><select id="dropdown">
+		<option>select country</option>
+		<option>India</option>
+		<option>Canada</option>
+		<option>Germany</option>
+		<option>Italy</option>
+		<option>Australia</option>
+		<option>Singapore</option>
+	</select></p>
+	<p id="gender">
+		<input type="radio" name="gender"id="male">male
+		<input type="radio" name="gender"id="female">female
+	</p>
 	<button id="button"onclick="demo()">submit</button>
 	</div>
 	<script type="text/javascript">
 		function demo(){
 			var username=document.getElementById("username").value
 			var password=document.getElementById("password").value
+			var dropdown=document.getElementById("dropdown").value
+			var gfemale=document.getElementById("female").checked
+			var gmale=document.getElementById("male").checked
+
+			if(gmale==true) var gender="male"
+				else var gender="female"
 			console.log(username)
 			console.log(password)
+			console.log(dropdown)
+			console.log(gender)
 			fetch("http://localhost:3000/newData",{
 			method:"POST",
 			headers:{
 				"Content-Type":"application/json"
 			},
-			body:JSON.stringify({name:username,password:password}
+			body:JSON.stringify({name:username,password:password,country:dropdown,gender:gender}
 				)
 		})
 		}
